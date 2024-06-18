@@ -15,18 +15,18 @@ class Buddie(BaseSettings):
 
 
 class RequestData(BaseSettings):
-    reqId: str = '69426-1718634050'
-    aimsid: str = '010.1999577206.2194057066:749204815'
+    reqId: str = ''
+    aimsid: str = ''
 
 
 class Settings(BaseSettings):
     request_data: RequestData = RequestData()
     cookies: dict = {
         'cookie-policy-accepted': '1',
-        'domain_sid': 'RbPQzywpfY4tELKKGzT_y%3A1718633839478',
-        'tmr_detect': '0%7C1718633946104',
+        'domain_sid': '',
+        'tmr_detect': '',
     }
-    patchVersion: str = '7362531439583167349'
+    patchVersion: str = ''
     headers: dict = {
         'Content-Type': 'application/json;charset=utf-8'
     }
