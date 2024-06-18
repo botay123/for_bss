@@ -31,5 +31,6 @@ class Settings(BaseSettings):
         'Content-Type': 'application/json;charset=utf-8'
     }
 
+    directory: str = 'results'
 
 settings = Settings()
