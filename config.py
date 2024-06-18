@@ -32,5 +32,7 @@ class Settings(BaseSettings):
     }
 
     directory: str = 'results'
+    wait_interval: float = 0.1
+
 
 settings = Settings()

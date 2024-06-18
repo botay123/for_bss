@@ -16,7 +16,7 @@ def getImage(img_id: str, path: str):
         url = f'https://u.icq.net/api/v92/files/info/{img_id}/?aimsid={settings.request_data.aimsid}'
 
         r = session.get(url, cookies=settings.cookies)
-        sleep(0.5)
+        sleep(settings.wait_interval)
 
         info = r.json().get('result').get('info')
         dlink = info.get('dlink')
@@ -36,8 +36,15 @@ def getImage(img_id: str, path: str):
 if __name__ == '__main__':
     contacts = get_contacts_from_json()
 
+    skip = False
+    start_folder = ''  # имя папки, если вдруг надо начать не с начала
+
     for contact in contacts:
         print(contact)
+
+        if contact.friendly == start_folder:
+            skip = False
+
         folders = getFolders(contact)
         aimId = contact.aimId
 
@@ -45,12 +52,17 @@ if __name__ == '__main__':
         img_path = folders.get('img_path')
         files = os.listdir(json_path)
 
-        if len(files) == 0:
+        if len(files) == 0 or skip:
             continue
 
         for file in files:
             with open(f'{json_path}/{file}', 'r') as f:
-                data = json.loads(f.read())
+                try:
+                    data = json.loads(f.read())
+                except Exception as e:
+                    print('Не удалось распарсить json', e.args)
+                    continue
+
             for msg in data:
                 if 'filesharing' in msg:
                     for filesharing in msg.get('filesharing'):
