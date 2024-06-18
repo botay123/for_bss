@@ -71,7 +71,7 @@ def getChatInfo(session: requests.Session,
     print(json.dumps(r.json(), indent=4, ensure_ascii=False))
 
 
-def getEntryGallery(session: requests.Session, aimId: str)->str:
+def getEntryGallery(session: requests.Session, aimId: str) -> str:
     url = 'https://u.icq.net/api/v92/rapi/getEntryGallery'
     # sn = '740975219'
     payload = '{"reqId":"' + settings.request_data.reqId + '","aimsid":"' + settings.request_data.aimsid + '","params":{"sn":"' + aimId + '","entriesInPatch":true,"subreqs":[{"subreqId":"older","fromEntryId":"max","entryCount":-6,"urlType":["video","image"]}]}}'
@@ -133,22 +133,21 @@ def getHistory(session: requests.Session, cookies: dict, request_data: RequestDa
             mime = None
         # print(msg.get('msgId'), msg.get('text'), file_id, mime)
 
-
-if __name__ == '__main__':
-    with requests.Session() as sess:
-        # # контакты из файла
-        # for buddie in get_contacts_from_json():
-        #
-        #     # получить id последнего сообщения
-        #     lastEntryId = getEntryGallery(sess, buddie.aimId)
-
-        #
-        # getChatInfo(sess)
-
-        # post (получить историю сообщений)
-        img = getHistory(sess, settings.cookies, settings.request_data)
-
-        # # get (получить ссылку на картинку, взять id и подставить после info)
-        # # url = 'https://u.icq.net/api/v92/files/info/06F1Q000ZV9X7BYmfhZMub6666f0221bg/?aimsid=006.3180876220.2071638319%3A749204815&previews=192%2C600%2C800%2Cxlarge'
-        # url = f'https://u.icq.net/api/v92/files/info/{img}/?aimsid=006.3180876220.2071638319%3A749204815&previews=192%2C600%2C800%2Cxlarge'
-        # get(url, sess, settings.cookies)
+# if __name__ == '__main__':
+#     with requests.Session() as sess:
+#         # # контакты из файла
+#         # for buddie in get_contacts_from_json():
+#         #
+#         #     # получить id последнего сообщения
+#         #     lastEntryId = getEntryGallery(sess, buddie.aimId)
+#
+#         #
+#         # getChatInfo(sess)
+#
+#         # post (получить историю сообщений)
+#         img = getHistory(sess, settings.cookies, settings.request_data)
+#
+#         # # get (получить ссылку на картинку, взять id и подставить после info)
+#         # # url = 'https://u.icq.net/api/v92/files/info/06F1Q000ZV9X7BYmfhZMub6666f0221bg/?aimsid=006.3180876220.2071638319%3A749204815&previews=192%2C600%2C800%2Cxlarge'
+#         # url = f'https://u.icq.net/api/v92/files/info/{img}/?aimsid=006.3180876220.2071638319%3A749204815&previews=192%2C600%2C800%2Cxlarge'
+#         # get(url, sess, settings.cookies)

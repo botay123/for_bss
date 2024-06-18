@@ -6,13 +6,12 @@ from pathlib import Path
 import requests
 
 from history_to_json import getFolders
-from scripts import get_contacts_from_json
+from utils import get_contacts_from_json
 from config import settings
 
 
-def getImage(img_id: str, path: str):
+def getFiles(img_id: str, path: str):
     with requests.Session() as session:
-        # url = f'https://u.icq.net/api/v92/files/info/{img_id}/?aimsid={settings.request_data.aimsid}%3A749204815&previews=192%2C600%2C800%2Cxlarge'
         url = f'https://u.icq.net/api/v92/files/info/{img_id}/?aimsid={settings.request_data.aimsid}'
 
         r = session.get(url, cookies=settings.cookies)
@@ -68,6 +67,6 @@ if __name__ == '__main__':
                     for filesharing in msg.get('filesharing'):
                         f_id = filesharing.get('id')
                         try:
-                            getImage(f_id, img_path)
+                            getFiles(f_id, img_path)
                         except Exception as e:
                             print(e.args)

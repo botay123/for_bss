@@ -5,25 +5,11 @@ import os
 import requests
 
 from config import Buddie, settings, RequestData
-from scripts import get_contacts_from_json
+from utils import get_contacts_from_json
 
 
 def getHistory(session: requests.Session, sn, fromMsgId='-1', count='-50') -> list:
     url = 'https://u.icq.net/api/v92/rapi/getHistory'
-    # payload = {"reqId": settings.request_data.reqId,
-    #            "aimsid": settings.request_data.aimsid,
-    #            "params": {
-    #                "sn": sn,
-    #                "fromMsgId": fromMsgId,
-    #                "count": count,
-    #                "lang": "ru",
-    #                "mentions": {
-    #                    "resolve": 'false'
-    #                },
-    #                "patchVersion": settings.patchVersion
-    #            }
-    #            }
-    # data = json.dumps(payload)
     data = '{"reqId":"' + settings.request_data.reqId + '","aimsid":"' + settings.request_data.aimsid + '","params":{"sn":"' + sn + '","fromMsgId":"' + fromMsgId + '","count":' + count + ',"lang":"ru","mentions":{"resolve":false},"patchVersion":"' + settings.patchVersion + '"}}'
     r = session.post(url,
                      data=data,
@@ -56,7 +42,7 @@ def getFolders(contact: Buddie) -> dict:
     if not os.path.exists(json_path):
         os.makedirs(json_path)
 
-    img_path = f'{contact_path}/image'
+    img_path = f'{contact_path}/files'
 
     if not os.path.exists(img_path):
         os.makedirs(img_path)
