@@ -56,9 +56,15 @@ def getFolders(contact: Buddie) -> dict:
     if not os.path.exists(json_path):
         os.makedirs(json_path)
 
+    img_path = f'{contact_path}/image'
+
+    if not os.path.exists(img_path):
+        os.makedirs(img_path)
+
     return {'contact_path': contact_path,
             'json_path': json_path,
-            'name': name}
+            'name': name,
+            'img_path': img_path}
 
 
 if __name__ == '__main__':
