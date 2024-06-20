@@ -32,6 +32,8 @@ if __name__ == '__main__':
 
     for contact in contacts:
 
+        pbar.update()
+
         # пропускаем контакты, которых нет в фильтре
         if contact not in filtered_contacts:
             continue

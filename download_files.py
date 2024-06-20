@@ -46,6 +46,8 @@ if __name__ == '__main__':
 
     for contact in contacts:
 
+        pbar.update()
+
         if contact not in filtered_contacts:
             continue
 
