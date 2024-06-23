@@ -69,6 +69,8 @@ def getFolders(contact: Buddie) -> dict:
     name = name.replace(',', '_')
     name = name.replace('-', '_')
     name = name.replace(' ', '_')
+    name = name.replace('>', '_')
+    name = name.replace('<', '_')
     name = name.replace('/', '_')
     name = name.replace('\\', '_')
     name = name.replace(':', '_')

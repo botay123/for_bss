@@ -36,3 +36,9 @@ python history_to_json.py
 python download_files.py
 ```
 Файлы сохраняются в папки files. Некоторы файлы могут отсутвовать на сервере. Имена файлов соответсвуют именам в сообщениях.
+
+9. Запустить парсинг сообщений в текстовик 
+```bash
+python parse_icq_json_to_text.py
+```
+Файлы сохраняются в папки parsed_results. 
