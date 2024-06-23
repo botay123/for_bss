@@ -47,6 +47,7 @@ def parseHar():
             url_contacts = url_data.group(0)
 
     request_data = RequestData(reqId=reqId, aimsid=aimsid)
+    print(request_data, url_contacts)
     user_config = UserConfig(request_data=request_data, cookies=cookies, patchVersion=patchVersion,
                              url_contacts=url_contacts)
 
